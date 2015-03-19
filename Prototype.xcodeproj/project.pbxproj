@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3037E591AB898D400AA7C9A /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037E581AB898D400AA7C9A /* AboutView.m */; };
+		B3037E5C1AB89B9E00AA7C9A /* GeofenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037E5B1AB89B9E00AA7C9A /* GeofenceManager.m */; };
+		B3037E631AB90CB100AA7C9A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3037E621AB90CB100AA7C9A /* NotificationCenter.framework */; };
+		B3037E691AB90CB100AA7C9A /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037E681AB90CB100AA7C9A /* TodayViewController.m */; };
+		B3037E6B1AB90CB100AA7C9A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3037E6A1AB90CB100AA7C9A /* MainInterface.storyboard */; };
+		B3037E6E1AB90CB100AA7C9A /* Geofence Now.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B3037E611AB90CB100AA7C9A /* Geofence Now.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B3037E7B1AB9E36500AA7C9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30D9F0A18EAF08D0029D813 /* Images.xcassets */; };
 		B30D9EF018EAF08D0029D813 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9EEF18EAF08D0029D813 /* Foundation.framework */; };
 		B30D9EF218EAF08D0029D813 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9EF118EAF08D0029D813 /* CoreGraphics.framework */; };
 		B30D9EF418EAF08D0029D813 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9EF318EAF08D0029D813 /* UIKit.framework */; };
@@ -14,17 +21,31 @@
 		B30D9EFC18EAF08D0029D813 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9EFB18EAF08D0029D813 /* main.m */; };
 		B30D9F0018EAF08D0029D813 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9EFF18EAF08D0029D813 /* AppDelegate.m */; };
 		B30D9F0318EAF08D0029D813 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30D9F0118EAF08D0029D813 /* Main.storyboard */; };
-		B30D9F0618EAF08D0029D813 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9F0518EAF08D0029D813 /* FirstViewController.m */; };
-		B30D9F0918EAF08D0029D813 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9F0818EAF08D0029D813 /* SecondViewController.m */; };
 		B30D9F0B18EAF08D0029D813 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30D9F0A18EAF08D0029D813 /* Images.xcassets */; };
 		B30D9F1218EAF08D0029D813 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9F1118EAF08D0029D813 /* XCTest.framework */; };
 		B30D9F1318EAF08D0029D813 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9EEF18EAF08D0029D813 /* Foundation.framework */; };
 		B30D9F1418EAF08D0029D813 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9EF318EAF08D0029D813 /* UIKit.framework */; };
 		B30D9F1C18EAF08D0029D813 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B30D9F1A18EAF08D0029D813 /* InfoPlist.strings */; };
 		B30D9F1E18EAF08D0029D813 /* PrototypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9F1D18EAF08D0029D813 /* PrototypeTests.m */; };
+		B30D9F2918EAF1DD0029D813 /* GeofenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9F2818EAF1DD0029D813 /* GeofenceView.m */; };
+		B30D9F3218EAF4E20029D813 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9F3018EAF4E20029D813 /* AudioToolbox.framework */; };
+		B30D9F3318EAF4E20029D813 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9F3118EAF4E20029D813 /* CoreLocation.framework */; };
+		B30D9F3518EAF4F70029D813 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D9F3418EAF4F70029D813 /* MapKit.framework */; };
+		B30D9F3818EAFBFE0029D813 /* RadiusPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D9F3718EAFBFE0029D813 /* RadiusPickerView.m */; };
+		B31D71D018EE17120099903F /* SplashScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = B31D71CF18EE17120099903F /* SplashScreenView.m */; };
+		B32158E818FD758B00817D18 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32158E718FD758B00817D18 /* AVFoundation.framework */; };
+		B32ACE8118F47831001DA691 /* AddGeofenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B32ACE8018F47831001DA691 /* AddGeofenceView.m */; };
+		B34BA1291AB26BDA001996AF /* SegueTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B34BA1281AB26BDA001996AF /* SegueTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B3037E6C1AB90CB100AA7C9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B30D9EE418EAF08D0029D813 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3037E601AB90CB100AA7C9A;
+			remoteInfo = "Geofence Now";
+		};
 		B30D9F1518EAF08D0029D813 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B30D9EE418EAF08D0029D813 /* Project object */;
@@ -34,7 +55,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B3037E721AB90CB100AA7C9A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B3037E6E1AB90CB100AA7C9A /* Geofence Now.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B3037E571AB898D400AA7C9A /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
+		B3037E581AB898D400AA7C9A /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
+		B3037E5A1AB89B9E00AA7C9A /* GeofenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceManager.h; sourceTree = "<group>"; };
+		B3037E5B1AB89B9E00AA7C9A /* GeofenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceManager.m; sourceTree = "<group>"; };
+		B3037E611AB90CB100AA7C9A /* Geofence Now.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Geofence Now.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3037E621AB90CB100AA7C9A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B3037E661AB90CB100AA7C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3037E671AB90CB100AA7C9A /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		B3037E681AB90CB100AA7C9A /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		B3037E6A1AB90CB100AA7C9A /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		B3037E731AB9CC0000AA7C9A /* Geofence Now.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Geofence Now.entitlements"; sourceTree = "<group>"; };
+		B3037E741AB9CFCF00AA7C9A /* Prototype.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Prototype.entitlements; sourceTree = "<group>"; };
 		B30D9EEC18EAF08D0029D813 /* Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B30D9EEF18EAF08D0029D813 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B30D9EF118EAF08D0029D813 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,23 +93,45 @@
 		B30D9EFE18EAF08D0029D813 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B30D9EFF18EAF08D0029D813 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B30D9F0218EAF08D0029D813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B30D9F0418EAF08D0029D813 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		B30D9F0518EAF08D0029D813 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		B30D9F0718EAF08D0029D813 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		B30D9F0818EAF08D0029D813 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		B30D9F0A18EAF08D0029D813 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B30D9F1018EAF08D0029D813 /* PrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B30D9F1118EAF08D0029D813 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B30D9F1918EAF08D0029D813 /* PrototypeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrototypeTests-Info.plist"; sourceTree = "<group>"; };
 		B30D9F1B18EAF08D0029D813 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B30D9F1D18EAF08D0029D813 /* PrototypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrototypeTests.m; sourceTree = "<group>"; };
+		B30D9F2718EAF1DD0029D813 /* GeofenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceView.h; sourceTree = "<group>"; };
+		B30D9F2818EAF1DD0029D813 /* GeofenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceView.m; sourceTree = "<group>"; };
+		B30D9F3018EAF4E20029D813 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B30D9F3118EAF4E20029D813 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B30D9F3418EAF4F70029D813 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B30D9F3618EAFBFE0029D813 /* RadiusPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusPickerView.h; sourceTree = "<group>"; };
+		B30D9F3718EAFBFE0029D813 /* RadiusPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusPickerView.m; sourceTree = "<group>"; };
+		B31D71CE18EE17120099903F /* SplashScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenView.h; sourceTree = "<group>"; };
+		B31D71CF18EE17120099903F /* SplashScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenView.m; sourceTree = "<group>"; };
+		B32158E718FD758B00817D18 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B32ACE7F18F47831001DA691 /* AddGeofenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGeofenceView.h; sourceTree = "<group>"; };
+		B32ACE8018F47831001DA691 /* AddGeofenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGeofenceView.m; sourceTree = "<group>"; };
+		B34BA1271AB26BDA001996AF /* SegueTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegueTransition.h; sourceTree = "<group>"; };
+		B34BA1281AB26BDA001996AF /* SegueTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegueTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B3037E5E1AB90CB100AA7C9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3037E631AB90CB100AA7C9A /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B30D9EE918EAF08D0029D813 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32158E818FD758B00817D18 /* AVFoundation.framework in Frameworks */,
+				B30D9F3518EAF4F70029D813 /* MapKit.framework in Frameworks */,
+				B30D9F3218EAF4E20029D813 /* AudioToolbox.framework in Frameworks */,
+				B30D9F3318EAF4E20029D813 /* CoreLocation.framework in Frameworks */,
 				B30D9EF218EAF08D0029D813 /* CoreGraphics.framework in Frameworks */,
 				B30D9EF418EAF08D0029D813 /* UIKit.framework in Frameworks */,
 				B30D9EF018EAF08D0029D813 /* Foundation.framework in Frameworks */,
@@ -82,11 +151,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3037E641AB90CB100AA7C9A /* Geofence Now */ = {
+			isa = PBXGroup;
+			children = (
+				B3037E731AB9CC0000AA7C9A /* Geofence Now.entitlements */,
+				B3037E671AB90CB100AA7C9A /* TodayViewController.h */,
+				B3037E681AB90CB100AA7C9A /* TodayViewController.m */,
+				B3037E6A1AB90CB100AA7C9A /* MainInterface.storyboard */,
+				B3037E651AB90CB100AA7C9A /* Supporting Files */,
+			);
+			path = "Geofence Now";
+			sourceTree = "<group>";
+		};
+		B3037E651AB90CB100AA7C9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3037E661AB90CB100AA7C9A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B30D9EE318EAF08D0029D813 = {
 			isa = PBXGroup;
 			children = (
 				B30D9EF518EAF08D0029D813 /* Prototype */,
 				B30D9F1718EAF08D0029D813 /* PrototypeTests */,
+				B3037E641AB90CB100AA7C9A /* Geofence Now */,
 				B30D9EEE18EAF08D0029D813 /* Frameworks */,
 				B30D9EED18EAF08D0029D813 /* Products */,
 			);
@@ -97,6 +187,7 @@
 			children = (
 				B30D9EEC18EAF08D0029D813 /* Prototype.app */,
 				B30D9F1018EAF08D0029D813 /* PrototypeTests.xctest */,
+				B3037E611AB90CB100AA7C9A /* Geofence Now.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,10 +195,15 @@
 		B30D9EEE18EAF08D0029D813 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B32158E718FD758B00817D18 /* AVFoundation.framework */,
+				B30D9F3418EAF4F70029D813 /* MapKit.framework */,
+				B30D9F3018EAF4E20029D813 /* AudioToolbox.framework */,
+				B30D9F3118EAF4E20029D813 /* CoreLocation.framework */,
 				B30D9EEF18EAF08D0029D813 /* Foundation.framework */,
 				B30D9EF118EAF08D0029D813 /* CoreGraphics.framework */,
 				B30D9EF318EAF08D0029D813 /* UIKit.framework */,
 				B30D9F1118EAF08D0029D813 /* XCTest.framework */,
+				B3037E621AB90CB100AA7C9A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,13 +211,24 @@
 		B30D9EF518EAF08D0029D813 /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
+				B3037E741AB9CFCF00AA7C9A /* Prototype.entitlements */,
 				B30D9EFE18EAF08D0029D813 /* AppDelegate.h */,
 				B30D9EFF18EAF08D0029D813 /* AppDelegate.m */,
+				B31D71CE18EE17120099903F /* SplashScreenView.h */,
+				B31D71CF18EE17120099903F /* SplashScreenView.m */,
+				B30D9F2718EAF1DD0029D813 /* GeofenceView.h */,
+				B30D9F2818EAF1DD0029D813 /* GeofenceView.m */,
+				B32ACE7F18F47831001DA691 /* AddGeofenceView.h */,
+				B32ACE8018F47831001DA691 /* AddGeofenceView.m */,
+				B30D9F3618EAFBFE0029D813 /* RadiusPickerView.h */,
+				B30D9F3718EAFBFE0029D813 /* RadiusPickerView.m */,
+				B3037E571AB898D400AA7C9A /* AboutView.h */,
+				B3037E581AB898D400AA7C9A /* AboutView.m */,
+				B3037E5A1AB89B9E00AA7C9A /* GeofenceManager.h */,
+				B3037E5B1AB89B9E00AA7C9A /* GeofenceManager.m */,
+				B34BA1271AB26BDA001996AF /* SegueTransition.h */,
+				B34BA1281AB26BDA001996AF /* SegueTransition.m */,
 				B30D9F0118EAF08D0029D813 /* Main.storyboard */,
-				B30D9F0418EAF08D0029D813 /* FirstViewController.h */,
-				B30D9F0518EAF08D0029D813 /* FirstViewController.m */,
-				B30D9F0718EAF08D0029D813 /* SecondViewController.h */,
-				B30D9F0818EAF08D0029D813 /* SecondViewController.m */,
 				B30D9F0A18EAF08D0029D813 /* Images.xcassets */,
 				B30D9EF618EAF08D0029D813 /* Supporting Files */,
 			);
@@ -160,6 +267,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B3037E601AB90CB100AA7C9A /* Geofence Now */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3037E6F1AB90CB100AA7C9A /* Build configuration list for PBXNativeTarget "Geofence Now" */;
+			buildPhases = (
+				B3037E5D1AB90CB100AA7C9A /* Sources */,
+				B3037E5E1AB90CB100AA7C9A /* Frameworks */,
+				B3037E5F1AB90CB100AA7C9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Geofence Now";
+			productName = "Geofence Now";
+			productReference = B3037E611AB90CB100AA7C9A /* Geofence Now.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B30D9EEB18EAF08D0029D813 /* Prototype */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B30D9F2118EAF08D0029D813 /* Build configuration list for PBXNativeTarget "Prototype" */;
@@ -167,10 +291,12 @@
 				B30D9EE818EAF08D0029D813 /* Sources */,
 				B30D9EE918EAF08D0029D813 /* Frameworks */,
 				B30D9EEA18EAF08D0029D813 /* Resources */,
+				B3037E721AB90CB100AA7C9A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B3037E6D1AB90CB100AA7C9A /* PBXTargetDependency */,
 			);
 			name = Prototype;
 			productName = Prototype;
@@ -204,6 +330,26 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = RVSLabs;
 				TargetAttributes = {
+					B3037E601AB90CB100AA7C9A = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = E8JK52PWDY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					B30D9EEB18EAF08D0029D813 = {
+						DevelopmentTeam = E8JK52PWDY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					B30D9F0F18EAF08D0029D813 = {
 						TestTargetID = B30D9EEB18EAF08D0029D813;
 					};
@@ -224,11 +370,21 @@
 			targets = (
 				B30D9EEB18EAF08D0029D813 /* Prototype */,
 				B30D9F0F18EAF08D0029D813 /* PrototypeTests */,
+				B3037E601AB90CB100AA7C9A /* Geofence Now */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B3037E5F1AB90CB100AA7C9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3037E6B1AB90CB100AA7C9A /* MainInterface.storyboard in Resources */,
+				B3037E7B1AB9E36500AA7C9A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B30D9EEA18EAF08D0029D813 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,14 +406,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B3037E5D1AB90CB100AA7C9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3037E691AB90CB100AA7C9A /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B30D9EE818EAF08D0029D813 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B30D9F0918EAF08D0029D813 /* SecondViewController.m in Sources */,
+				B34BA1291AB26BDA001996AF /* SegueTransition.m in Sources */,
 				B30D9F0018EAF08D0029D813 /* AppDelegate.m in Sources */,
-				B30D9F0618EAF08D0029D813 /* FirstViewController.m in Sources */,
+				B3037E591AB898D400AA7C9A /* AboutView.m in Sources */,
+				B31D71D018EE17120099903F /* SplashScreenView.m in Sources */,
+				B3037E5C1AB89B9E00AA7C9A /* GeofenceManager.m in Sources */,
 				B30D9EFC18EAF08D0029D813 /* main.m in Sources */,
+				B30D9F3818EAFBFE0029D813 /* RadiusPickerView.m in Sources */,
+				B32ACE8118F47831001DA691 /* AddGeofenceView.m in Sources */,
+				B30D9F2918EAF1DD0029D813 /* GeofenceView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +441,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B3037E6D1AB90CB100AA7C9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3037E601AB90CB100AA7C9A /* Geofence Now */;
+			targetProxy = B3037E6C1AB90CB100AA7C9A /* PBXContainerItemProxy */;
+		};
 		B30D9F1618EAF08D0029D813 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B30D9EEB18EAF08D0029D813 /* Prototype */;
@@ -307,6 +481,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B3037E701AB90CB100AA7C9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Geofence Now/Geofence Now.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Geofence Now/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B3037E711AB90CB100AA7C9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Geofence Now/Geofence Now.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Geofence Now/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		B30D9F1F18EAF08D0029D813 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -382,10 +597,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Prototype/Prototype.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prototype/Prototype-Prefix.pch";
 				INFOPLIST_FILE = "Prototype/Prototype-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -395,10 +614,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Prototype/Prototype.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prototype/Prototype-Prefix.pch";
 				INFOPLIST_FILE = "Prototype/Prototype-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -446,6 +669,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B3037E6F1AB90CB100AA7C9A /* Build configuration list for PBXNativeTarget "Geofence Now" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3037E701AB90CB100AA7C9A /* Debug */,
+				B3037E711AB90CB100AA7C9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B30D9EE718EAF08D0029D813 /* Build configuration list for PBXProject "Prototype" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -462,6 +693,7 @@
 				B30D9F2318EAF08D0029D813 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B30D9F2418EAF08D0029D813 /* Build configuration list for PBXNativeTarget "PrototypeTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +702,7 @@
 				B30D9F2618EAF08D0029D813 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
