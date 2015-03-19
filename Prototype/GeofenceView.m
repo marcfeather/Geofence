@@ -236,7 +236,6 @@
     [saveData setObject:self.logNotification forKey:@"logNotification"];
     [saveData setObject:self.logTime forKey:@"logTime"];
     [saveData synchronize];
-    
 }
 
 - (void) showStatePanelView {
@@ -283,10 +282,28 @@
     }
 }
 
+- (void) getGeoHeartBeat:(NSTimer *)timer {
+    
+    for (CLCircularRegion *monitored in [self.GPSManager monitoredRegions]) {
+        
+        if ([monitored.identifier isEqualToString:self.geofenceName]) {
+            [self.GPSManager requestStateForRegion:monitored];
+        }
+    }
+}
+
 #pragma mark LocationManager Delegate Methods
 
+- (void) locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLCircularRegion *)region {
+    
+    self.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval: 3.0
+                                                      target:self
+                                                    selector:@selector(getGeoHeartBeat:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+}
+
 - (void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLCircularRegion *)region {
-    self.locationUsedRegion = region;
     
     self.statusMessage = @"You are now entering the monitored region";
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"IN"];
@@ -295,7 +312,6 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didExitRegion:(CLCircularRegion *)region {
-    self.locationUsedRegion = region;
 
     self.statusMessage = @"You are now leaving the monitored region";
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"OUT"];
@@ -305,7 +321,6 @@
 
 - (void) locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLCircularRegion *)region {
     self.geofenceManager = [[GeofenceManager alloc] init];
-    self.locationUsedRegion = region;
 
     if (region == nil) {
         NSLog(@"Problems in the region %@", region.description);
