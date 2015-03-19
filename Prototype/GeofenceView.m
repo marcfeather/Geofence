@@ -130,12 +130,12 @@
     self.geofenceManager = [[GeofenceManager alloc] init];
     
     if ([self.regionMonitoring isOn]) {
-        [self displayOrHideStateInfoView];
+        [self hideStatePanelView];
         [self.geofenceManager insertGeofence:self.locationUsedRegion withName:self.geofenceName description:self.geofenceDescription andRadius:self.regionRadius intoMap:self.geofenceMap usingLocationManager:self.GPSManager];
         [self.geofenceManager postGeofenceStatusOnTodayWidget:@"ON"];
     }
     if (![self.regionMonitoring isOn]) {
-        [self displayOrHideStateInfoView];
+        [self hideStatePanelView];
         [self.geofenceManager stopMonitoringAndClearGeofence:self.locationUsedRegion fromMap:self.geofenceMap usingLocationManager:self.GPSManager];
         [self.geofenceManager postGeofenceStatusOnTodayWidget:@"OFF"];
     }
@@ -284,21 +284,21 @@
 
 #pragma mark LocationManager Delegate Methods
 
-- (void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+- (void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLCircularRegion *)region {
     self.statusMessage = @"You are now entering the monitored region";
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"IN"];
 
     [self actionsToBeExecuted];
 }
 
-- (void) locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+- (void) locationManager:(CLLocationManager *)manager didExitRegion:(CLCircularRegion *)region {
     self.statusMessage = @"You are now leaving the monitored region";
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"OUT"];
 
     [self actionsToBeExecuted];
 }
 
-- (void) locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+- (void) locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLCircularRegion *)region {
     self.geofenceManager = [[GeofenceManager alloc] init];
     
     if (region == nil) {
