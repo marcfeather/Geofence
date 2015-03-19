@@ -62,6 +62,7 @@
     }
     
     [self.GPSManager startUpdatingLocation];
+    [self.GPSManager startMonitoringSignificantLocationChanges];
     
     [self performSelector:@selector(setMapCenter) withObject:self afterDelay:2.0];
 }
@@ -285,6 +286,8 @@
 #pragma mark LocationManager Delegate Methods
 
 - (void) locationManager:(CLLocationManager *)manager didEnterRegion:(CLCircularRegion *)region {
+    self.locationUsedRegion = region;
+    
     self.statusMessage = @"You are now entering the monitored region";
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"IN"];
 
@@ -292,6 +295,8 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didExitRegion:(CLCircularRegion *)region {
+    self.locationUsedRegion = region;
+
     self.statusMessage = @"You are now leaving the monitored region";
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"OUT"];
 
@@ -300,7 +305,8 @@
 
 - (void) locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLCircularRegion *)region {
     self.geofenceManager = [[GeofenceManager alloc] init];
-    
+    self.locationUsedRegion = region;
+
     if (region == nil) {
         NSLog(@"Problems in the region %@", region.description);
     }

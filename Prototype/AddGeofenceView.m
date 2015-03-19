@@ -193,6 +193,7 @@
     }
     else if(theTextField==self.addressField) {
         [self getCoordinatesWithAddress];
+        [self.addressField resignFirstResponder];
         return YES;
     }
     return NO;
