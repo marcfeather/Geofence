@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface GeofenceManager : NSObject
 
@@ -15,6 +17,9 @@
 - (void) postGeofenceStatusOnTodayWidget:(NSString *)status;
 - (void) postGeofenceNameOnTodayWidget:(NSString *)name;
 - (void) deleteGeofenceData;
+- (void) insertLocalNotificationWithMessage:(NSString *)message andTime:(NSString *)time;
+- (void) deleteLocalNotifications;
+- (void) speakMessage:(NSString *)message withETA:(NSString *)ETA;
 
 
 @end

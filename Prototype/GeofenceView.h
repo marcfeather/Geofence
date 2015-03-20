@@ -1,7 +1,5 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <AudioToolbox/AudioToolbox.h>
-#import <AVFoundation/AVFoundation.h>
 #import <MapKit/MapKit.h>
 #import "GeofenceManager.h"
 

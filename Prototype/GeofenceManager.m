@@ -135,4 +135,41 @@ intoMap:(MKMapView *)map usingLocationManager:(CLLocationManager *)locationManag
     [self postGeofenceNameOnTodayWidget:@"No Geofence Assigned"];
 }
 
+- (NSString *) getCurrentTime {
+    NSDate *now = [[NSDate alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [NSTimeZone resetSystemTimeZone];
+    NSTimeZone *gmtZone = [NSTimeZone systemTimeZone];
+    [dateFormatter setTimeZone:gmtZone];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    return [dateFormatter stringFromDate:now];
+}
+
+-(void) insertLocalNotificationWithMessage:(NSString *)message andTime:(NSString *)time {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    UILocalNotification *localNotification = [[UILocalNotification alloc]init];
+    localNotification.alertBody = [NSString stringWithFormat:@"%@ at %@",message,[self getCurrentTime]];
+    localNotification.alertAction = @"OK";
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication]applicationIconBadgeNumber] + 1;
+    [[UIApplication sharedApplication]presentLocalNotificationNow:localNotification];
+}
+
+- (void) deleteLocalNotifications {
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    for (UILocalNotification *notification in eventArray)
+    {
+        [app cancelLocalNotification:notification];
+    }
+}
+
+-(void) speakMessage:(NSString *)message withETA:(NSString *)ETA {
+    AVSpeechSynthesizer *speech = [[AVSpeechSynthesizer alloc] init];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:[NSString stringWithFormat:@"%@.%@",message, ETA]];
+    utterance.rate = 0.25;
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
+    [speech speakUtterance:utterance];
+}
+
 @end

@@ -189,53 +189,17 @@
     [self performSegueWithIdentifier:@"addGeofenceView" sender:self];
 }
 
-- (void) displayLocalNotification {
-    
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    UILocalNotification *localNotification = [[UILocalNotification alloc]init];
-    localNotification.alertBody = [NSString stringWithFormat:@"%@ at %@",self.statusMessage,self.currentTimeString];
-    localNotification.alertAction = @"OK";
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication]applicationIconBadgeNumber] + 1;
-    
-    [[UIApplication sharedApplication]presentLocalNotificationNow:localNotification];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Geofence"
-                                                    message:self.statusMessage
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles: nil];
-    [alert show];
-    [[self navigationController] tabBarItem].badgeValue = @"1";
-    
-    AVSpeechSynthesizer *speech = [[AVSpeechSynthesizer alloc] init];
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:[NSString stringWithFormat:@"%@.%@",self.statusMessage, self.ETAMessage]];
-    utterance.rate = 0.25;
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
-    [speech speakUtterance:utterance];
-    
-}
-
-- (void) getCurrentTime {
-    NSDate *now = [[NSDate alloc] init];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [NSTimeZone resetSystemTimeZone];
-    NSTimeZone *gmtZone = [NSTimeZone systemTimeZone];
-    [dateFormatter setTimeZone:gmtZone];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    self.currentTimeString = [dateFormatter stringFromDate:now];
-}
-
 - (void) actionsToBeExecuted {
-    [self getCurrentTime];
-    [self displayLocalNotification];
-    
-    [self.logNotification addObject:@"Your Geofence was executed successfully"];
-    [self.logTime addObject:self.currentTimeString];
+    self.geofenceManager = [[GeofenceManager alloc] init];
+    [self.geofenceManager insertLocalNotificationWithMessage:self.statusMessage andTime:self.currentTimeString];
+    [self.geofenceManager speakMessage:self.statusMessage withETA:self.ETAMessage];
     
     NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
     [saveData setObject:self.logNotification forKey:@"logNotification"];
     [saveData setObject:self.logTime forKey:@"logTime"];
     [saveData synchronize];
+    
+    [[self navigationController] tabBarItem].badgeValue = @"1";
 }
 
 - (void) showStatePanelView {
@@ -407,6 +371,7 @@
     [self.geofenceManager stopMonitoringAndClearGeofence:self.locationUsedRegion fromMap:self.geofenceMap usingLocationManager:self.GPSManager];
     [self.geofenceManager deleteGeofenceData];
     [self.geofenceManager postGeofenceStatusOnTodayWidget:@"OFF"];
+    [self.geofenceManager deleteLocalNotifications];
     
     if (self.GPSManager.monitoredRegions.count == 0) {
         [self.heartbeatTimer invalidate];
