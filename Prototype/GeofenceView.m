@@ -26,7 +26,6 @@
     
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.leftBarButtonItem = self.monitoringStatusButton;
-
 }
 
 - (void) viewDidLoad {
@@ -161,7 +160,6 @@
     }
     [self hideStatePanelView];
 }
-
 
 - (void) applyBlurOnMap {
     
