@@ -340,7 +340,6 @@
 						};
 					};
 					B30D9EEB18EAF08D0029D813 = {
-						DevelopmentTeam = E8JK52PWDY;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -676,6 +675,7 @@
 				B3037E711AB90CB100AA7C9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B30D9EE718EAF08D0029D813 /* Build configuration list for PBXProject "Prototype" */ = {
 			isa = XCConfigurationList;
