@@ -8,5 +8,9 @@ Geofence app also has a widget that let you know if you are in or out your desig
 
 The app is iOS 7 and 8 compatible.
 
+Frameworks:
+CoreLocation
+MapKit
+
 This project was designed in order to present my programming skills. If you like some of the code you reached, feel free to use.
 

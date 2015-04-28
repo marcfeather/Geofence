@@ -122,7 +122,6 @@ intoMap:(MKMapView *)map usingLocationManager:(CLLocationManager *)locationManag
 }
 
 - (void) deleteGeofenceData {
-    
     NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
     [saveData setDouble: 0 forKey:@"regionLatitude"];
     [saveData setDouble: 0 forKey:@"regionLongitude"];
