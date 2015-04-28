@@ -73,7 +73,7 @@
 - (IBAction) goToGeofenceAndStartMonitoring:(id)sender {
 
     if (self.geofenceNameField.text.length == 0 || self.addressField.text.length == 0 || self.radius == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Erro"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"You need to insert a name and assign an address and a distance to a region"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
