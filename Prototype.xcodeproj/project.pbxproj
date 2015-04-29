@@ -340,7 +340,6 @@
 						};
 					};
 					B30D9EEB18EAF08D0029D813 = {
-						DevelopmentTeam = E8JK52PWDY;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
