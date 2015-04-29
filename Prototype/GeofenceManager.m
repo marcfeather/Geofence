@@ -109,6 +109,68 @@ intoMap:(MKMapView *)map usingLocationManager:(CLLocationManager *)locationManag
     [map setMapType:MKMapTypeSatellite];
 }
 
+- (void) getAddressWithCurrentCoordinatesUsingMap:(MKMapView *)map {
+    
+    [map removeAnnotations:map.annotations];
+    
+    NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:map.userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        NSDictionary *dictionary = [[placemarks objectAtIndex:0] addressDictionary];
+        
+        if ([dictionary valueForKey:@"Street"] == nil) {
+            
+            [saveData setObject: @"Unable to get your current address" forKey:@"regionAddress"];
+            [saveData synchronize];
+        }
+        
+        else {
+            
+            NSString *locationUsedAddress = [NSString stringWithFormat:@"%@, %@",
+                                             [dictionary valueForKey:@"Thoroughfare"],
+                                             [dictionary valueForKey:@"City"]];
+            
+            [saveData setObject: locationUsedAddress forKey:@"regionAddress"];
+            [saveData synchronize];
+        }
+    }];
+}
+
+- (void) getCoordinatesWithAddress:(NSString *)address usingMap:(MKMapView *)map {
+    
+    [map removeAnnotations:map.annotations];
+    
+    NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
+
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:address completionHandler:^(NSArray* placemarks, NSError* error)
+     
+     {
+         if (placemarks && placemarks.count > 0)
+         {
+             CLPlacemark *topResult = [placemarks objectAtIndex:0];
+             MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+             
+             [map addAnnotation:placemark];
+             
+             CLLocation *address = placemark.location;
+             
+             [map setCenterCoordinate:address.coordinate];
+             
+             MKCoordinateRegion region = map.region;
+             region.span.longitudeDelta = 0.0;
+             region.span.latitudeDelta = 0.0;
+             [map setRegion:region animated:YES];
+             
+             [saveData setDouble: placemark.location.coordinate.latitude forKey:@"regionLatitude"];
+             [saveData setDouble: placemark.location.coordinate.longitude forKey:@"regionLongitude"];
+             [saveData synchronize];
+         }
+     }];
+}
+
+
 -(void) postGeofenceStatusOnTodayWidget:(NSString *)status {
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.geofence"];
     [sharedDefaults setValue:status forKey:@"geofenceStatus"];

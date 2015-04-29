@@ -14,6 +14,8 @@
 - (void) setMapTypeStandard:(MKMapView *)map;
 - (void) setMapTypeHybrid:(MKMapView *)map;
 - (void) setMapTypeSatellite:(MKMapView *)map;
+- (void) getAddressWithCurrentCoordinatesUsingMap:(MKMapView *)map;
+- (void) getCoordinatesWithAddress:(NSString *)address usingMap:(MKMapView *)map;
 - (void) postGeofenceStatusOnTodayWidget:(NSString *)status;
 - (void) postGeofenceNameOnTodayWidget:(NSString *)name;
 - (void) deleteGeofenceData;

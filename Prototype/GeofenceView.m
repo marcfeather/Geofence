@@ -107,7 +107,7 @@
     self.geofenceDescription = [retrieveSavedData objectForKey:@"regionDescription"];
 }
 
-- (CLCircularRegion *)createGeofence {
+- (CLCircularRegion *) createGeofence {
     [self retrieveSavedData];
     
     if (self.regionRadius == 0 || self.regionLatitude == 0 || self.regionLongitude == 0 || self.geofenceName == nil) {
@@ -119,7 +119,6 @@
     else {
         self.locationUsedRegion = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(self.regionLatitude, self.regionLongitude) radius:self.regionRadius identifier:self.geofenceName];
         return self.locationUsedRegion;
-
     }
     return self.locationUsedRegion;
 }

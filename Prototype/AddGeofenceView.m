@@ -53,20 +53,11 @@
     
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 
-    if (self.radius == 0) {
-        NSLog(@"No value was assigned to radius");
-    }
-    else {
-        NSLog(@"%f",self.radius);
-    }
-    
-    NSUserDefaults *retrieveSavedData = [NSUserDefaults standardUserDefaults];
-    self.geofenceNameField.text = [retrieveSavedData objectForKey:@"regionName"];
-    self.geofenceDescriptionField.text = [retrieveSavedData objectForKey:@"regionDescription"];
-    self.addressField.text = [retrieveSavedData objectForKey:@"regionAddress"];
+    [self retrieveGeofenceInformation];
     
     if (self.addressField.text.length > 10) {
-        [self getCoordinatesWithAddress];
+        self.geofenceManager = [[GeofenceManager alloc] init];
+        [self.geofenceManager getCoordinatesWithAddress:self.addressField.text usingMap:self.mapView];
     }
 }
 
@@ -74,7 +65,7 @@
 
     if (self.geofenceNameField.text.length == 0 || self.addressField.text.length == 0 || self.radius == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"You need to insert a name and assign an address and a distance to a region"
+                                                        message:@"You need to insert a name, assign an address and a distance to a region"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles: nil];
@@ -86,17 +77,16 @@
 }
 
 - (IBAction) useAddressCoordinates:(id)sender {
-    [self getCoordinatesWithAddress];
-    [self saveGeofenceInformation];
+    self.geofenceManager = [[GeofenceManager alloc] init];
+    [self.geofenceManager getCoordinatesWithAddress:self.addressField.text usingMap:self.mapView];
     [self performSegueWithIdentifier:@"geofenceView" sender:self];
 }
 
 - (IBAction) useCurrentCoordinates:(id)sender {
-    [self.mapView removeAnnotations:self.mapView.annotations];
-
-    [self getAddressWithCurrentCoordinates];
-    [self performSelector:@selector(getCoordinatesWithAddress) withObject:self afterDelay:2.0];
-
+    self.geofenceManager = [[GeofenceManager alloc] init];
+    [self.geofenceManager getAddressWithCurrentCoordinatesUsingMap:self.mapView];
+    
+    [self retrieveGeofenceInformation];
 }
 
 - (IBAction) goToGeofenceView:(id)sender {
@@ -109,76 +99,35 @@
 
 }
 
-- (void) saveGeofenceInformation {
+- (void) retrieveGeofenceInformation {
+    NSUserDefaults *retrieveSavedData = [NSUserDefaults standardUserDefaults];
+    self.geofenceNameField.text = [retrieveSavedData objectForKey:@"regionName"];
+    self.geofenceDescriptionField.text = [retrieveSavedData objectForKey:@"regionDescription"];
+    self.addressField.text = [retrieveSavedData objectForKey:@"regionAddress"];
+    self.latitude = [retrieveSavedData doubleForKey:@"regionLatitude"];
+    self.longitude = [retrieveSavedData doubleForKey:@"regionLongitude"];
+    self.radius = [retrieveSavedData doubleForKey:@"regionRadius"];
+    
+    if (self.radius == 0) {
+        NSLog(@"No value was assigned to radius");
+    }
+    else {
+        NSLog(@"%f",self.radius);
+    }
+}
 
-        NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
-        [saveData setDouble: self.latitude forKey:@"regionLatitude"];
-        [saveData setDouble: self.longitude forKey:@"regionLongitude"];
-        [saveData setDouble: self.radius forKey:@"regionRadius"];
-        [saveData setObject: self.geofenceNameField.text forKey:@"regionName"];
-        [saveData setObject: self.geofenceDescriptionField.text forKey:@"regionDescription"];
-        [saveData setObject: self.addressField.text forKey:@"regionAddress"];
-        [saveData synchronize];
+- (void) saveGeofenceInformation {
+    NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
+    [saveData setDouble: self.radius forKey:@"regionRadius"];
+    [saveData setObject: self.geofenceNameField.text forKey:@"regionName"];
+    [saveData setObject: self.geofenceDescriptionField.text forKey:@"regionDescription"];
+    [saveData setObject: self.addressField.text forKey:@"regionAddress"];
+    [saveData setDouble:self.latitude forKey:@"regionLatitude"];
+    [saveData setDouble:self.longitude forKey:@"regionLongitude"];
+    [saveData synchronize];
     
     self.geofenceManager = [[GeofenceManager alloc] init];
     [self.geofenceManager postGeofenceNameOnTodayWidget:self.geofenceNameField.text];
-}
-
-- (void) getAddressWithCurrentCoordinates {
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation:self.mapView.userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
-        
-        NSDictionary *dictionary = [[placemarks objectAtIndex:0] addressDictionary];
-        
-        if ([dictionary valueForKey:@"Street"] == nil) {
-            
-            self.addressField.text = @"Unable to get your current address";
-        }
-        
-        else {
-            NSString *locationUsedAddress = [NSString stringWithFormat:@"%@, %@, %@, %@",
-                                   [dictionary valueForKey:@"Street"],
-                                   [dictionary valueForKey:@"City"],
-                                   [dictionary valueForKey:@"State"],[dictionary valueForKey:@"Country"]];
-            
-            self.addressField.text = locationUsedAddress;
-            self.latitude = self.mapView.userLocation.coordinate.latitude;
-            self.longitude = self.mapView.userLocation.coordinate.longitude;
-        }
-    }];
-}
-
-- (void) getCoordinatesWithAddress {
-    
-    [self.mapView removeAnnotations:self.mapView.annotations];
-
-    
-    NSString *addressString = self.addressField.text;
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:addressString completionHandler:^(NSArray* placemarks, NSError* error)
-     
-     {
-         if (placemarks && placemarks.count > 0)
-         {
-             CLPlacemark *topResult = [placemarks objectAtIndex:0];
-             MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-             
-             [self.mapView addAnnotation:placemark];
-             
-             CLLocation *address = placemark.location;
-             
-             [self.mapView setCenterCoordinate:address.coordinate];
-             
-             MKCoordinateRegion region = self.mapView.region;
-             region.span.longitudeDelta = 0.0;
-             region.span.latitudeDelta = 0.0;
-             [self.mapView setRegion:region animated:YES];
-             
-             self.latitude = placemark.location.coordinate.latitude;
-             self.longitude = placemark.location.coordinate.longitude;
-             
-         }
-     }];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)theTextField {
@@ -192,7 +141,8 @@
         return YES;
     }
     else if(theTextField==self.addressField) {
-        [self getCoordinatesWithAddress];
+        self.geofenceManager = [[GeofenceManager alloc] init];
+        [self.geofenceManager getCoordinatesWithAddress:self.addressField.text usingMap:self.mapView];
         [self.addressField resignFirstResponder];
         return YES;
     }

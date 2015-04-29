@@ -71,6 +71,9 @@
     
     if (self.radiusValue > 0) {
         [self.doneButton setEnabled:YES];
+        NSUserDefaults *saveData = [NSUserDefaults standardUserDefaults];
+        [saveData setDouble: self.radiusValue forKey:@"regionRadius"];
+        [saveData synchronize];
     }
 }
 
@@ -85,9 +88,6 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    AddGeofenceView *addGeofence = segue.destinationViewController;
-    addGeofence.radius = self.radiusValue;
 
 }
 
