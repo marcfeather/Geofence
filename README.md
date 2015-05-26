@@ -1,4 +1,4 @@
-# Geofence
+# Geofence ![](https://cloud.githubusercontent.com/assets/5962662/7803736/6f44b08e-032d-11e5-86ec-3dbcb073cab4.png)
 
 Version 1.0
 
